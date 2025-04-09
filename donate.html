@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate - NGO CONNECT</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f8fb;
+    }
+
+    .donate-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    }
+
+    .donate-form {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+      animation: slideIn 0.6s ease forwards;
+    }
+
+    .donate-form:hover {
+      transform: translateY(-5px);
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 6px;
+      padding: 12px;
+      border: 1px solid #ccc;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+    }
+
+    .donate-form button {
+      background-color: #007bff;
+      color: white;
+      font-weight: 600;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .donate-form button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .donation-summary {
+      display: none;
+      background: #eef5f9;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .donation-summary p {
+      opacity: 0;
+      animation: fadeIn 0.6s ease-in-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    .thank-you-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: green;
+      text-align: center;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .donate-section {
+        padding: 50px 15px;
+      }
+
+      @media (max-width: 576px) {
+        .donate-form button {
+          margin-top: 15px;
+        }
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/cropped-Untitled_logo_1_free-file-removebg-preview (1).png" alt="NGO CONNECT Logo">
+        NGO CONNECT
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="donate-section">
+    <div class="container">
+      <h2 class="text-center mb-4">Support Our Cause – Make a Donation</h2>
+      <p class="text-center mb-5">Your contribution helps us bring positive change to communities in need. No donation
+        is too small to make a difference.</p>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="donate-form">
+            <form id="donationForm" novalidate>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" id="name" class="form-control" placeholder="John Doe" required />
+              </div>
+
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="your@example.com" required />
+                <div class="invalid-feedback">Valid email is required.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="purpose" class="form-label">Purpose of Donation</label>
+                <select id="purpose" class="form-select" required>
+                  <option value="">Select a purpose</option>
+                  <option value="Education Support">Education Support</option>
+                  <option value="Healthcare Aid">Healthcare Aid</option>
+                  <option value="Disaster Relief">Disaster Relief</option>
+                  <option value="General Fund">General Fund</option>
+                </select>
+                <div class="invalid-feedback">Please select a purpose.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="amount" class="form-label">Donation Amount (USD)</label>
+                <input type="number" id="amount" class="form-control" placeholder="e.g. 50" min="1" required />
+                <div class="invalid-feedback">Amount must be at least $1.</div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Payment Method</label>
+                <div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="paypal" value="PayPal"
+                      required>
+                    <label class="form-check-label" for="paypal">PayPal</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="card"
+                      value="Credit/Debit Card">
+                    <label class="form-check-label" for="card">Credit/Debit Card</label>
+                  </div>
+                </div>
+                <div class="invalid-feedback d-block" id="paymentError" style="display: none;">Please select a payment
+                  method.</div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="donateButton" disabled>Donate Now</button>
+            </form>
+
+            <div id="donationSummary" class="donation-summary">
+              <h4>🎉 Donation Summary</h4>
+              <p><strong>Name:</strong> <span id="summaryName"></span></p>
+              <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+              <p><strong>Purpose:</strong> <span id="summaryPurpose"></span></p>
+              <p><strong>Amount:</strong> $<span id="summaryAmount"></span></p>
+              <p><strong>Payment Method:</strong> <span id="summaryMethod"></span></p>
+            </div>
+
+            <div class="thank-you-message" id="thankYouMessage">💖 Thank you for your kind donation! Together, we’re
+              creating change.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer-section bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Brand Info -->
+        <div class="col-lg-4 col-md-6">
+          <h4 class="footer-brand mb-3">NGO CONNECT</h4>
+          <p class="footer-text">
+            Bridging the gap between hope and action. Empowering lives through education, sustainability, and care.
+          </p>
+          <div class="footer-social mt-3">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title mb-3">Contact</h5>
+          <p><i class="fas fa-envelope me-2"></i>info@ngoconnect.org</p>
+          <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+          <p><i class="fas fa-map-marker-alt me-2"></i>New Delhi, India</p>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title mb-3">Stay Updated</h5>
+          <p>Subscribe for updates and impact stories.</p>
+          <form class="d-flex">
+            <input type="email" class="form-control me-2" placeholder="Your Email" required />
+            <button type="submit" class="btn btn-warning">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <hr class="footer-divider mt-4" />
+
+      <div class="text-center">
+        <small class="text-muted">&copy; 2025 NGO CONNECT. All Rights Reserved. | Designed with ❤️</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const donationForm = document.getElementById("donationForm");
+    const donateButton = document.getElementById("donateButton");
+    const amountInput = document.getElementById("amount");
+
+    amountInput.addEventListener("input", function () {
+      const amount = parseFloat(this.value);
+      donateButton.disabled = isNaN(amount) || amount <= 0;
+      donateButton.textContent = !isNaN(amount) && amount > 0 ? `Donate $${amount.toFixed(2)}` : "Donate Now";
+    });
+
+    donationForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let isValid = true;
+      const inputs = this.querySelectorAll("input, select");
+      const paymentSelected = donationForm.querySelector('input[name="paymentMethod"]:checked');
+      const paymentError = document.getElementById("paymentError");
+
+      inputs.forEach((input) => {
+        if (!input.checkValidity()) {
+          input.classList.add("is-invalid");
+          isValid = false;
+        } else {
+          input.classList.remove("is-invalid");
+        }
+      });
+
+      if (!paymentSelected) {
+        paymentError.style.display = "block";
+        isValid = false;
+      } else {
+        paymentError.style.display = "none";
+      }
+
+      if (isValid) {
+        document.getElementById("summaryName").textContent = donationForm.name.value;
+        document.getElementById("summaryEmail").textContent = donationForm.email.value;
+        document.getElementById("summaryPurpose").textContent = donationForm.purpose.value;
+        document.getElementById("summaryAmount").textContent = donationForm.amount.value;
+        document.getElementById("summaryMethod").textContent = paymentSelected.value;
+
+        document.getElementById("donationSummary").style.display = "block";
+        document.getElementById("thankYouMessage").style.display = "block";
+
+        donationForm.reset();
+        donateButton.textContent = "Donate Now";
+        donateButton.disabled = true;
+      }
+    });
+    if (isValid) {
+      // Scroll to summary
+      document.getElementById("donationSummary").scrollIntoView({ behavior: "smooth" });
+    }
+donateButton.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Processing...`;
+setTimeout(() => {
+  // Show summary and reset button
+  donateButton.textContent = "Donate Now";
+}, 1000);
+
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- AOS Initialization -->
+  <script>
+    AOS.init();
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
