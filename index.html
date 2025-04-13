@@ -7,6 +7,7 @@
   <title>NGO CONNECT - Home</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link href="styles.css" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -175,6 +176,101 @@
       border-radius: 30px;
     }
 
+    .testimonials-section {
+      background: #f9f9f9;
+    }
+
+    .testimonial-card {
+      max-width: 650px;
+      padding: 30px;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-avatar {
+      font-size: 3rem;
+      color: #007bff;
+      animation: pulse 1.5s infinite;
+    }
+
+    .star-rating i {
+      color: #ffc107;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
+
+    .carousel-item.active .star-rating i:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .carousel-item.active .star-rating i:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .carousel-item.active .star-rating i:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .carousel-item.active .star-rating i:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+
+    .carousel-item.active .star-rating i:nth-child(5) {
+      animation-delay: 1s;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .carousel-item {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .carousel-item.active {
+      opacity: 1;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: #007bff;
+      border-radius: 50%;
+      padding: 10px;
+    }
 
     /* Core Initiatives Section */
     .initiatives {
@@ -258,6 +354,63 @@
       }
     }
 
+/* Slightly Larger Button Styling */
+/* Regular Button Styling */
+.btn-success {
+  display: inline-block;
+  padding: 12px 19px; /* Slightly increased padding */
+  font-size: 20px; /* Slightly larger font size */
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  background-color:  #e0a800; /* Light green */
+  color: white;
+  border: 2px solid green ;
+}
+
+.btn:hover {
+  transform: translateY(-3px); /* Hover lift effect */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  border: 3px solid green ;
+}
+
+/* White Button Styling */
+/* Default Blue Button */
+.btn-blue {
+  display: inline-block;
+  background-color: #007BFF; /* Blue background */
+  color: white; /* White text */
+  border: 2px solid #007BFF; /* Blue border */
+  border-radius: 25px; /* Rounded edges */
+  padding: 12px 19px;
+  font-size: 20px;
+  transition: all 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.btn-blue:hover {
+  background-color: white; /* Change background to white on hover */
+  color: #007BFF; /* Change text color to blue */
+  border: 2px solid #007BFF; /* Keep blue border on hover */
+  transform: translateY(-4px); /* Slight lift on hover */
+  box-shadow: 0px 6px 15px rgba(0, 123, 255, 0.3); /* Subtle shadow effect on hover */
+}
+.btn-outline-light{
+  background-color: rgb(55, 199, 55);
+}
+/* Mobile Responsiveness for Buttons */
+@media (max-width: 768px) {
+  .btn {
+    padding: 10px 16px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+}
+
 
     .donate-section,
     .volunteer-section {
@@ -271,6 +424,47 @@
       font-weight: 600;
       margin-bottom: 20px;
     }
+
+    .stats-section i {
+      transition: transform 0.5s ease;
+    }
+
+    .stats-section i:hover {
+      transform: scale(1.2);
+    }
+
+    .stats-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .stats-section p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .icon-animate {
+      transition: transform 0.5s ease, color 0.5s ease;
+    }
+
+    .stats-section .counter {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+      transition: transform 0.3s ease;
+    }
+
+    .stats-section .counter.final {
+      transform: scale(1.2);
+      color: #007bff;
+    }
+
+    .stats-section .col-md-3:hover .icon-animate {
+      transform: scale(1.2);
+      color: #007bff;
+    }
+
 
 
 
@@ -292,7 +486,7 @@
         <img src="images/cropped-Untitled_logo_1_free-file-removebg-preview (1).png" alt="NGO CONNECT Logo">
         NGO CONNECT
       </a>
-      
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -303,6 +497,7 @@
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"> <a class="nav-link" href="events.html">Events</a></li>
         </ul>
       </div>
     </div>
@@ -311,13 +506,15 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="container">
+    <div class="container text-center">
       <h1>Empowering Lives, Building Futures</h1>
       <p>Join our mission to create sustainable change in communities around the world.</p>
-      <a href="donate.html" class="btn btn-light btn-lg me-2">Donate Now</a>
+      <a href="donate.html" class="btn btn-blue btn-lg me-2">Donate Now</a>
       <a href="volunteer.html" class="btn btn-outline-light btn-lg">Become a Volunteer</a>
     </div>
   </section>
+  
+
 
   <!-- About Preview -->
   <section class="about-preview py-5" id="about-preview">
@@ -331,20 +528,51 @@
         </div>
 
         <!-- Content Section -->
-        <div class="col-md-6" data-aos="fade-left">
-          <h2 class="section-title">Our Vision</h2>
-          <p class="lead">
-            At <strong>NGO CONNECT</strong>, we envision a world where compassion drives change. We work tirelessly to
-            uplift underprivileged communities by connecting resources, education, and care where it's needed most.
-          </p>
-          <p>
-            Every effort counts. Join us in creating real, lasting impact — one action at a time.
-          </p>
-          <a href="about.html" class="btn btn-outline-primary btn-lg mt-3">
-            Learn More <i class="bi bi-arrow-right ms-2"></i>
-          </a>
-        </div>
-
+        <div class="col-md-6" 
+        data-aos="fade-left" 
+        data-aos-duration="1500" 
+        data-aos-easing="ease-in-out" 
+        data-aos-mirror="true">
+     
+     <!-- Section Title with AOS Animation -->
+     <h2 class="section-title" 
+         data-aos="fade-right" 
+         data-aos-delay="100" 
+         data-aos-duration="1600" 
+         data-aos-mirror="true">
+       Our Vision
+     </h2>
+   
+     <!-- Lead Paragraph with Fade-Up Animation -->
+     <p class="lead" 
+        data-aos="fade-up" 
+        data-aos-delay="300" 
+        data-aos-duration="1800" 
+        data-aos-mirror="true">
+       At <strong>NGO CONNECT</strong>, we envision a world where compassion drives change. We work tirelessly to 
+       uplift underprivileged communities by connecting resources, education, and care where it's needed most.
+     </p>
+     
+     <!-- Additional Paragraph with Fade-Up Animation -->
+     <p data-aos="fade-up" 
+        data-aos-delay="600" 
+        data-aos-duration="2000" 
+        data-aos-mirror="true">
+       Every effort counts. Join us in creating real, lasting impact — one action at a time.
+     </p>
+     
+     <!-- Button with Zoom-In Animation -->
+     <a href="about.html" 
+        class="btn btn-outline-primary btn-lg mt-3" 
+        data-aos="zoom-in" 
+        data-aos-delay="900" 
+        data-aos-duration="2200" 
+        data-aos-mirror="true">
+       Learn More <i class="bi bi-arrow-right ms-2"></i>
+     </a>
+   </div>
+   
+        
       </div>
     </div>
   </section>
@@ -394,55 +622,59 @@
   <section class="stats-section py-5 text-center bg-light">
     <div class="container">
       <div class="row">
-        <div class="col-md-3 mb-4">
-          <i class="fas fa-users fa-3x text-primary mb-2"></i>
-          <h2 class="counter" data-count="2500">0</h2>
+        <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-users fa-3x text-primary mb-2 icon-animate"></i>
+          <h2 class="counter" data-count="2500">0+</h2>
           <p>Volunteers</p>
         </div>
-        <div class="col-md-3 mb-4">
-          <i class="fas fa-hand-holding-heart fa-3x text-danger mb-2"></i>
-          <h2 class="counter" data-count="1500">0</h2>
+        <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-hand-holding-heart fa-3x text-danger mb-2 icon-animate"></i>
+          <h2 class="counter" data-count="1500">0+</h2>
           <p>Donors</p>
         </div>
-        <div class="col-md-3 mb-4">
-          <i class="fas fa-project-diagram fa-3x text-success mb-2"></i>
-          <h2 class="counter" data-count="350">0</h2>
+        <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-project-diagram fa-3x text-success mb-2 icon-animate"></i>
+          <h2 class="counter" data-count="350">0+</h2>
           <p>Projects</p>
         </div>
-        <div class="col-md-3 mb-4">
-          <i class="fas fa-smile-beam fa-3x text-warning mb-2"></i>
-          <h2 class="counter" data-count="12000">0</h2>
+        <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="400">
+          <i class="fas fa-smile-beam fa-3x text-warning mb-2 icon-animate"></i>
+          <h2 class="counter" data-count="12000">0+</h2>
           <p>Lives Impacted</p>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- Testimonials Section -->
-  <section class="testimonials-section py-5">
+  <section class="testimonials-section py-5" data-aos="fade-up">
     <div class="container">
-      <h2 class="text-center mb-5">What People Say About Us</h2>
-      <div id="testimonialCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
-        <div class="carousel-inner text-center">
-  
+      <h2 class="text-center mb-5" data-aos="zoom-in" data-aos-delay="200">What People Say About Us</h2>
+      <div id="testimonialCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel"
+        data-bs-interval="4000">
+        <div class="carousel-inner text-center" data-aos="fade-up" data-aos-delay="400">
+
           <!-- Testimonial 1 -->
-          <div class="carousel-item active">
-            <div class="testimonial-card mx-auto">
-              <div class="testimonial-avatar mb-3">
+          <div class="carousel-item active" data-aos="fade-up" data-aos-delay="600">
+            <div class="testimonial-card mx-auto" data-aos="zoom-in" data-aos-delay="800">
+              <div class="testimonial-avatar mb-3" data-aos="zoom-in" data-aos-delay="900">
                 <i class="fas fa-graduation-cap"></i>
               </div>
-              <p class="lead">"NGO CONNECT changed my life by giving me access to education. Forever grateful!"</p>
-              <div class="star-rating mb-2">
+              <p class="lead" data-aos="fade-up" data-aos-delay="1000">"NGO CONNECT changed my life by giving me access
+                to education. Forever grateful!"</p>
+              <div class="star-rating mb-2" data-aos="zoom-in" data-aos-delay="1200">
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-half"></i>
               </div>
-              <h5 class="mt-3">— Ayesha, <span class="text-muted">Beneficiary</span></h5>
+              <h5 class="mt-3" data-aos="fade-up" data-aos-delay="1400">— Ayesha, <span
+                  class="text-muted">Beneficiary</span></h5>
             </div>
           </div>
-  
+
           <!-- Testimonial 2 -->
           <div class="carousel-item">
             <div class="testimonial-card mx-auto">
@@ -460,7 +692,7 @@
               <h5 class="mt-3">— Rahul, <span class="text-muted">Volunteer</span></h5>
             </div>
           </div>
-  
+
           <!-- Testimonial 3 -->
           <div class="carousel-item">
             <div class="testimonial-card mx-auto">
@@ -478,7 +710,7 @@
               <h5 class="mt-3">— Neha Kapoor, <span class="text-muted">Donor</span></h5>
             </div>
           </div>
-  
+
           <!-- Testimonial 4 -->
           <div class="carousel-item">
             <div class="testimonial-card mx-auto">
@@ -496,9 +728,9 @@
               <h5 class="mt-3">— Mr. Thomas, <span class="text-muted">Corporate Partner</span></h5>
             </div>
           </div>
-  
+
         </div>
-  
+
         <!-- Carousel Controls -->
         <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -511,8 +743,8 @@
       </div>
     </div>
   </section>
-  
-  
+
+
 
   <!-- Volunteer Section -->
   <section class="volunteer-section">
@@ -522,8 +754,20 @@
       <a href="volunteer.html" class="btn btn-success btn-lg">Become a Volunteer</a>
     </div>
   </section>
+  <section class="donate-section">
+    <div class="container">
+      <h2>Support Our Cause</h2>
+      <p>Your contribution will make a meaningful impact on the communities we serve.</p>
+      <a href="donate.html" class="btn btn-blue btn-lg">Donate Now</a> <!-- Added the 'btn-blue' class here -->
+    </div>
+  </section>
+  
+
+  
+  
 
   <!-- Footer -->
+  
   <footer class="footer-section bg-dark text-white pt-5 pb-4">
     <div class="container">
       <div class="row gy-4">
@@ -533,14 +777,17 @@
           <p class="footer-text">
             Bridging the gap between hope and action. Empowering lives through education, sustainability, and care.
           </p>
+          <p class="footer-text mb-3">
+            Join us in making a meaningful difference for communities across the globe.
+          </p>
           <div class="footer-social mt-3">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-
+  
         <!-- Quick Links -->
         <div class="col-lg-2 col-md-6">
           <h5 class="footer-title mb-3">Quick Links</h5>
@@ -549,9 +796,11 @@
             <li><a href="about.html" class="footer-link">About</a></li>
             <li><a href="gallery.html" class="footer-link">Gallery</a></li>
             <li><a href="contact.html" class="footer-link">Contact</a></li>
+            <li><a href="donate.html" class="footer-link">Donate</a></li>
+            <li><a href="volunteer.html" class="footer-link">Volunteer</a></li>
           </ul>
         </div>
-
+  
         <!-- Contact Info -->
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title mb-3">Contact</h5>
@@ -559,25 +808,26 @@
           <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
           <p><i class="fas fa-map-marker-alt me-2"></i>New Delhi, India</p>
         </div>
-
+  
         <!-- Newsletter -->
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title mb-3">Stay Updated</h5>
-          <p>Subscribe for updates and impact stories.</p>
-          <form class="d-flex">
-            <input type="email" class="form-control me-2" placeholder="Your Email" required />
+          <p>Subscribe for updates, news, and inspiring stories from our community.</p>
+          <form id="subscribeForm" class="d-flex">
+            <input type="email" id="subscriberEmail" class="form-control me-2" placeholder="Your Email" required />
             <button type="submit" class="btn btn-warning">Join</button>
           </form>
         </div>
+  
       </div>
-
       <hr class="footer-divider mt-4" />
-
       <div class="text-center">
-        <small class="text-muted">&copy; 2025 NGO CONNECT. All Rights Reserved. | Designed with ❤️</small>
+        <small class="text-muted">&copy; 2025 NGO CONNECT. All Rights Reserved. | Designed with ❤️ by Tushar</small>
       </div>
     </div>
   </footer>
+  
+  
 
 
 
@@ -585,48 +835,111 @@
   <!-- Slower Counter Animation Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const counters = document.querySelectorAll(".counter");
+      const counters = document.querySelectorAll('.counter');
 
-      const animateCounter = (counter) => {
-        const target = +counter.getAttribute("data-count");
-        let count = 0;
+      function runCounter() {
+        counters.forEach(counter => {
+          counter.innerText = '0+';
+          const target = +counter.getAttribute('data-count');
+          let current = 0;
 
-        const updateCount = () => {
-          const increment = target / 150; // Smaller increment for slower animation
+          const duration = 4000; // total duration in ms (ultra slow)
+          const interval = 20;   // ms per update (lower = smoother)
+          const increment = Math.ceil(target / (duration / interval));
 
-          if (count < target) {
-            count += increment;
-            counter.innerText = Math.ceil(count);
-            setTimeout(updateCount, 20); // Slower frame rate
-          } else {
-            counter.innerText = target + "+";
-          }
-        };
+          const updateCount = () => {
+            current += increment;
+            if (current < target) {
+              counter.innerText = current + "+";
+              setTimeout(updateCount, interval);
+            } else {
+              counter.innerText = target + "+";
+            }
+          };
 
-        updateCount();
-      };
-
-      const hasAnimated = new Set();
-
-      const handleScroll = () => {
-        counters.forEach((counter) => {
-          const rect = counter.getBoundingClientRect();
-          const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight + 100;
-
-          if (isVisible && !hasAnimated.has(counter)) {
-            animateCounter(counter);
-            hasAnimated.add(counter);
-          }
+          updateCount();
         });
-      };
+      }
 
-      window.addEventListener("scroll", handleScroll);
-      handleScroll(); // Trigger once in case the counters are already in view
+      function checkScroll() {
+        const statsSection = document.querySelector('.stats-section');
+        const sectionTop = statsSection.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight;
+
+        if (sectionTop < screenPosition) {
+          runCounter();
+          window.removeEventListener('scroll', checkScroll);
+        }
+      }
+
+      window.addEventListener('scroll', checkScroll);
     });
-
-
-
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const counters = document.querySelectorAll('.counter');
+
+      function runCounter() {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-count');
+          let current = 0;
+          counter.innerText = '0+';
+
+          const duration = 4000; // total duration in ms
+          const interval = 20;   // ms per update
+          const increment = Math.ceil(target / (duration / interval));
+
+          const updateCount = () => {
+            current += increment;
+            if (current < target) {
+              counter.innerText = current + "+";
+              setTimeout(updateCount, interval);
+            } else {
+              counter.innerText = target + "+";
+            }
+          };
+
+          updateCount();
+        });
+      }
+
+      function resetCounters() {
+        counters.forEach(counter => {
+          counter.innerText = '0+';
+        });
+      }
+
+      function checkScroll() {
+        const statsSection = document.querySelector('.stats-section');
+        const sectionTop = statsSection.getBoundingClientRect().top;
+        const sectionBottom = statsSection.getBoundingClientRect().bottom;
+        const screenHeight = window.innerHeight;
+
+        // If section is in view
+        if (sectionTop < screenHeight && sectionBottom > 0) {
+          // Only run if not already counting
+          if (!statsSection.classList.contains('counting')) {
+            statsSection.classList.add('counting');
+            runCounter();
+          }
+        } else {
+          // Reset and allow counting again
+          if (statsSection.classList.contains('counting')) {
+            statsSection.classList.remove('counting');
+            resetCounters();
+          }
+        }
+      }
+
+      window.addEventListener('scroll', checkScroll);
+    });
+  </script>
+
+
+
+
+
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const currentLocation = window.location.href;
@@ -641,35 +954,90 @@
       });
     });
     document.addEventListener("DOMContentLoaded", () => {
-    const counters = document.querySelectorAll(".counter");
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute("data-count");
-        const current = +counter.innerText;
-        const increment = target / 100;
+      const counters = document.querySelectorAll(".counter");
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute("data-count");
+          const current = +counter.innerText;
+          const increment = target / 100;
 
-        if (current < target) {
-          counter.innerText = Math.ceil(current + increment);
-          setTimeout(updateCount, 30);
-        } else {
-          counter.innerText = target;
-        }
-      };
-      updateCount();
+          if (current < target) {
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(updateCount, 30);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
     });
-  });
   </script>
 
+  <script>
+    const testimonialCarousel = document.getElementById('testimonialCarousel');
+
+    testimonialCarousel.addEventListener('slid.bs.carousel', function () {
+      const activeStars = testimonialCarousel.querySelector('.carousel-item.active .star-rating').children;
+      Array.from(activeStars).forEach(star => {
+        star.style.animation = 'none';
+        star.offsetHeight; // Trigger reflow
+        star.style.animation = '';
+      });
+    });
+  </script>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
   <!-- AOS Initialization -->
   <script>
-    AOS.init();
+  AOS.init({
+  duration: 1200,
+  once: false,             // Animate on both scroll down and up
+  mirror: true,            // Repeat animations on scroll-up
+  easing: 'ease-in-out',   // Smooth transitions
+  offset: 120,             // Start animations 120px before element enters viewport
+});
+
   </script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize EmailJS with your User ID
+    emailjs.init("1gLieMpTSjAUG7aHK");
+
+    // Attach listener to your subscription form
+    document.getElementById("subscribeForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Get email value
+      const userEmail = document.getElementById("subscriberEmail").value;
+
+      // Validate email (basic)
+      if (!userEmail || !userEmail.includes("@")) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      // Send email via EmailJS
+      emailjs.send("service_cp5lz27", "template_2x4pw2g", {
+        email: userEmail,
+      }).then(function(response) {
+        console.log("Success!", response);
+        alert("Thank you for subscribing!");
+        // Clear the form
+        document.getElementById("subscribeForm").reset();
+      }, function(error) {
+        console.error("Failed...", error);
+        alert("Something went wrong. Please try again later.");
+      });
+    });
+  });
+</script>
 </body>
 
 </html>

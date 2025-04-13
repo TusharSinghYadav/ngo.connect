@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - NGO CONNECT</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="styles.css" rel="stylesheet" />
+
+
+  <style>
+    .events-section {
+      background-color: #fefefe;
+    }
+
+    .events-section h2 {
+      font-weight: 700;
+      color: #2c3e50;
+    }
+
+    .events-section p {
+      color: #555;
+    }
+
+
+    .event-card::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(0, 123, 255, 0.2);
+      opacity: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .event-card:hover::after {
+      transform: translate(-50%, -50%) scale(50);
+      opacity: 0;
+    }
+
+    /* Add to your CSS */
+    .event-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .event-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .event-card h4 {
+      color: #007bff;
+      margin-bottom: 12px;
+    }
+
+    .event-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .event-card .btn {
+      border-radius: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .events-section h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Overall section styling */
+    /* Overall section styling */
+    .scroll-timeline {
+      background: #f9f9f9;
+      padding-top: 80px;
+      /* Increased space for the header */
+      padding-bottom: 80px;
+      position: relative;
+      color: #333;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Timeline line in the middle */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 90px;
+      /* Increased padding to move the line well below the header */
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, #00aaff, #007bff);
+      margin-left: -2px;
+      z-index: 1;
+      /* Ensure line is behind the content */
+    }
+
+    /* Container to position items to the left and right of the line */
+    .timeline-container {
+      position: relative;
+      display: flex;
+      overflow-x: scroll;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 800px;
+      gap: 20px;
+      padding: 20px 0;
+      padding: 0 15px;
+    }
+
+    /* Add this to your CSS for icon styles */
+    .event-card i {
+      color: #007bff;
+      /* Default icon color */
+      margin-bottom: 15px;
+    }
+
+    .event-card:hover i {
+      color: #0056b3;
+      /* Change icon color on hover */
+    }
+
+    /* Each individual event item */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      min-width: 250px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(100px);
+      /* Initial position off-screen */
+      z-index: 2;
+      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+      /* Longer duration for smooth effect */
+    }
+    .timeline-item:hover {
+      transform: scale(1.05);
+    }
+    /* Timeline item becomes visible when in viewport */
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item:not(.visible) {
+      transform: translateY(100px);
+      /* Keep initial position off-screen for animation */
+    }
+
+    /* Dots that represent the event point */
+    .timeline-dot {
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 4px solid #007bff;
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(0, 123, 255, 0.6);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -10px;
+      z-index: 2;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Hover effect for dots */
+    .timeline-dot:hover {
+      background: #00aaff;
+      transform: scale(1.2);
+    }
+
+    /* The content cards for each event */
+    .timeline-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 650px;
+      margin-top: 20px;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    /* Heading of event cards */
+    .timeline-card h4 {
+      color: #333;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      transition: color 0.3s ease;
+    }
+
+    /* Event description inside the card */
+    .timeline-card p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+      transition: color 0.3s ease;
+    }
+
+    /* Event cards hover effects */
+    .timeline-card:hover {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-10px);
+      /* Add slight hover lift */
+    }
+
+    /* Add a subtle glow effect on hover for the timeline card */
+    .timeline-card:hover h4 {
+      color: #007bff;
+    }
+
+    /* Responsiveness for smaller screens */
+    @media (max-width: 768px) {
+      .timeline-container {
+        width: 100%;
+      }
+
+      .timeline-card {
+        width: 90%;
+        margin-left: 0;
+      }
+
+      .timeline-line {
+        display: none;
+        /* Hide the line on smaller screens */
+      }
+
+      .timeline-dot {
+        margin-left: -12px;
+      }
+    }
+
+    .event-item:hover .event-card {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    .event-card h4 {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      animation: typing 2s steps(40) 1s forwards;
+    }
+
+    .timeline-dot {
+      animation: pulse 2s infinite;
+    }
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/cropped-Untitled_logo_1_free-file-removebg-preview (1).png" alt="NGO CONNECT Logo">
+        NGO CONNECT
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"> <a class="nav-link" href="events.html">Events</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="events-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-4" data-aos="fade-up">Upcoming Events & Campaigns</h2>
+      <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">
+        Join our mission to uplift communities through impactful events and initiatives. Be part of the change.
+      </p>
+      <div class="row gy-4">
+
+        <!-- Event 1 -->
+        <div class="col-lg-4 col-md-6 event-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="event-card p-4 shadow rounded h-100">
+            <i class="fas fa-tshirt fa-2x mb-3 text-primary"></i> <!-- Icon for donation drive -->
+            <h4>Winter Clothes Donation Drive</h4>
+            <p><strong>Date:</strong> April 20, 2025</p>
+            <p><strong>Location:</strong> Connaught Place, New Delhi</p>
+            <p>Distribute warm clothes and blankets to those in need. Help spread warmth and smiles.</p>
+            <a href="#" class="btn btn-primary btn-sm mt-3">Join Now</a>
+          </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="col-lg-4 col-md-6 event-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="event-card p-4 shadow rounded h-100">
+            <i class="fas fa-stethoscope fa-2x mb-3 text-success"></i> <!-- Icon for health camp -->
+            <h4>Health Check-up Camp</h4>
+            <p><strong>Date:</strong> May 5, 2025</p>
+            <p><strong>Location:</strong> Rajouri Garden, Delhi</p>
+            <p>Free medical services including health screening, BP, sugar checks & consultations.</p>
+            <a href="#" class="btn btn-primary btn-sm mt-3">Volunteer</a>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="col-lg-4 col-md-6 event-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="event-card p-4 shadow rounded h-100">
+            <i class="fas fa-tree fa-2x mb-3 text-success"></i> <!-- Icon for tree plantation -->
+            <h4>Tree Plantation Drive</h4>
+            <p><strong>Date:</strong> June 12, 2025</p>
+            <p><strong>Location:</strong> India Gate Lawns, New Delhi</p>
+            <p>Help plant 1,000+ saplings and raise awareness about environmental sustainability.</p>
+            <a href="#" class="btn btn-primary btn-sm mt-3">Join Now</a>
+          </div>
+        </div>
+
+        <!-- Event 4 -->
+        <div class="col-lg-4 col-md-6 event-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="event-card p-4 shadow rounded h-100">
+            <i class="fas fa-hamburger fa-2x mb-3 text-warning"></i> <!-- Icon for food distribution -->
+            <h4>Street Food Distribution Drive</h4>
+            <p><strong>Date:</strong> July 8, 2025</p>
+            <p><strong>Location:</strong> Seemapuri, Delhi</p>
+            <p>Serve freshly prepared meals to homeless and daily wage families in urban settlements.</p>
+            <a href="#" class="btn btn-primary btn-sm mt-3">Get Involved</a>
+          </div>
+        </div>
+
+        <!-- Event 5 -->
+        <div class="col-lg-4 col-md-6 event-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="event-card p-4 shadow rounded h-100">
+            <i class="fas fa-chalkboard-teacher fa-2x mb-3 text-info"></i> <!-- Icon for educational workshop -->
+            <h4>Educational Workshop for Kids</h4>
+            <p><strong>Date:</strong> August 2, 2025</p>
+            <p><strong>Location:</strong> NGO CONNECT Center, Karol Bagh</p>
+            <p>Organize art, craft & computer basics sessions for underprivileged school children.</p>
+            <a href="#" class="btn btn-primary btn-sm mt-3">Volunteer</a>
+          </div>
+        </div>
+
+        <!-- Event 6 -->
+        <div class="col-lg-4 col-md-6 event-item" data-aos="fade-up" data-aos-delay="600">
+          <div class="event-card p-4 shadow rounded h-100">
+            <i class="fas fa-female fa-2x mb-3 text-danger"></i> <!-- Icon for women's safety march -->
+            <h4>Women's Safety Awareness March</h4>
+            <p><strong>Date:</strong> September 15, 2025</p>
+            <p><strong>Location:</strong> Janpath, New Delhi</p>
+            <p>Join us for a march advocating women’s rights, safety awareness & gender equality.</p>
+            <a href="#" class="btn btn-primary btn-sm mt-3">Register Now</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="scroll-timeline py-5">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-down">Past Event Highlights</h2>
+      <div class="timeline-line"></div>
+
+      <!-- Event Item 1 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <h4>✨ Food Distribution Drive — 2023</h4>
+          <p><strong>Date:</strong> February 15, 2023</p>
+          <p>We distributed <strong>5,000 meal kits</strong> to migrant families during the lockdown hardships in New
+            Delhi. The initiative was aimed at ensuring that no one went hungry during the difficult times.</p>
+          <p><strong>Impact:</strong> Reached over 3,000 families and provided essential nutrition to children and the
+            elderly.</p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Event Item 2 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <h4>🌿 Tree Plantation Marathon — 2022</h4>
+          <p><strong>Date:</strong> October 5, 2022</p>
+          <p>As part of our environmental initiative, we planted <strong>2,000+ saplings</strong> at Rajghat Riverside
+            Greens in New Delhi. Volunteers from all over the city came together to contribute to a greener future.</p>
+          <p><strong>Impact:</strong> Increased green cover in the area and contributed to cleaner air quality.</p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Event Item 3 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <h4>🧣 Winter Essentials Drive — 2021</h4>
+          <p><strong>Date:</strong> December 10, 2021</p>
+          <p>During the harsh winter of 2021, we distributed <strong>3,000+ blankets</strong> and woolens to roadside
+            dwellers in the Delhi NCR region. The drive aimed to provide warmth to those living in the cold.</p>
+          <p><strong>Impact:</strong> Benefited over 2,500 homeless individuals and families, ensuring they were
+            sheltered against the winter chill.</p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Learn More</a>
+        </div>
+      </div>
+
+      <!-- New Event Item 5 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <h4>📚 Education Support Drive — 2019</h4>
+          <p><strong>Date:</strong> July 22, 2019</p>
+          <p>We provided free school supplies, books, and study material to underprivileged students in the rural areas
+            of Rajasthan.</p>
+          <p><strong>Impact:</strong> Empowered over 1,500 students with educational tools, helping them stay in school.
+          </p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Learn More</a>
+        </div>
+      </div>
+
+      <!-- New Event Item 6 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <h4>🚰 Clean Water Initiative — 2018</h4>
+          <p><strong>Date:</strong> November 11, 2018</p>
+          <p>We built water filtration systems and installed clean water pumps in remote villages suffering from water
+            scarcity.</p>
+          <p><strong>Impact:</strong> Improved access to clean drinking water for over 3,000 villagers.</p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Learn More</a>
+        </div>
+      </div>
+
+      <!-- New Event Item 7 -->
+      <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <h4>👩‍🦽 Disability Awareness Campaign — 2017</h4>
+          <p><strong>Date:</strong> March 8, 2017</p>
+          <p>We hosted an awareness campaign for people with disabilities, providing mobility aids and conducting
+            workshops on inclusivity.</p>
+          <p><strong>Impact:</strong> Benefited 500+ individuals with disabilities by raising awareness and providing
+            resources.</p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Learn More</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <footer class="footer-section bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Brand Info -->
+        <div class="col-lg-4 col-md-6">
+          <h4 class="footer-brand mb-3">NGO CONNECT</h4>
+          <p class="footer-text">
+            Bridging the gap between hope and action. Empowering lives through education, sustainability, and care.
+          </p>
+          <p class="footer-text mb-3">
+            Join us in making a meaningful difference for communities across the globe.
+          </p>
+          <div class="footer-social mt-3">
+            <a href="#" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+            <li><a href="donate.html" class="footer-link">Donate</a></li>
+            <li><a href="volunteer.html" class="footer-link">Volunteer</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title mb-3">Contact</h5>
+          <p><i class="fas fa-envelope me-2"></i>info@ngoconnect.org</p>
+          <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+          <p><i class="fas fa-map-marker-alt me-2"></i>New Delhi, India</p>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title mb-3">Stay Updated</h5>
+          <p>Subscribe for updates, news, and inspiring stories from our community.</p>
+          <form id="subscribeForm" class="d-flex">
+            <input type="email" id="subscriberEmail" class="form-control me-2" placeholder="Your Email" required />
+            <button type="submit" class="btn btn-warning">Join</button>
+          </form>
+        </div>
+
+      </div>
+      <hr class="footer-divider mt-4" />
+      <div class="text-center">
+        <small class="text-muted">&copy; 2025 NGO CONNECT. All Rights Reserved. | Designed with ❤️ by Tushar</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize AOS animations
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+
+      // Highlight active nav link based on current URL
+      const currentLocation = window.location.href.split('/').pop();
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute("href").split('/').pop();
+        if (linkPath === currentLocation || (linkPath === '' && currentLocation === 'index.html')) {
+          link.classList.add("active-link");
+        } else {
+          link.classList.remove("active-link");
+        }
+      });
+
+      // Timeline scroll-triggered animations
+
+
+    });
+
+  </script>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  </body>
+
+</html>

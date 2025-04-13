@@ -10,129 +10,276 @@
   <link href="styles.css" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #f4f8fb;
+    }
+
+    .hero-section {
+      background: url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1650&q=80') no-repeat center center/cover;
+      padding: 140px 20px 100px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-section h1, .hero-section p {
+      position: relative;
+      z-index: 1;
     }
 
     .donate-section {
       padding: 80px 20px;
-      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
     }
 
     .donate-form {
       background: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      transition: 0.3s ease;
-      animation: slideIn 0.6s ease forwards;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
     }
 
     .donate-form:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
     }
+    .donation-progress h5 {
+  font-weight: 600;
+}
 
-    .form-label {
-      font-weight: 600;
-      color: #333;
-    }
+.progress {
+  background-color: #e9ecef;
+  border-radius: 50px;
+  overflow: hidden;
+}
 
-    .form-control,
-    .form-select {
-      border-radius: 6px;
-      padding: 12px;
-      border: 1px solid #ccc;
-    }
-
-    .form-control:focus,
-    .form-select:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
-    }
+.progress-bar {
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.6s ease;
+}
 
     .donate-form button {
-      background-color: #007bff;
-      color: white;
+      background-color: #ff6b6b;
+      color: #fff;
       font-weight: 600;
       padding: 12px 20px;
       border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      border-radius: 8px;
       width: 100%;
-      transition: background 0.3s ease, transform 0.2s;
+      transition: background 0.3s;
     }
 
     .donate-form button:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
+      background-color: #d14545;
     }
 
-    .donation-summary {
-      display: none;
-      background: #eef5f9;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      animation: fadeIn 0.6s ease-in-out;
+    .form-label i {
+      margin-right: 8px;
+      color: #007bff;
     }
 
-    .donation-summary p {
-      opacity: 0;
-      animation: fadeIn 0.6s ease-in-out forwards;
-      animation-delay: 0.2s;
-    }
-
-    .thank-you-message {
-      display: none;
-      margin-top: 20px;
-      font-size: 1.5rem;
-      color: green;
+    .stats {
       text-align: center;
-      animation: fadeIn 0.6s ease-in-out;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .stats h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
     }
 
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
+    /* General Styles for the FAQ Section */
+/* FAQ Section */
+.faq-section {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+}
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+.faq-section h2 {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+}
+
+.faq-section .accordion-item {
+  margin-bottom: 20px;
+}
+
+.faq-section .accordion-button {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: none;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-section .accordion-button:hover,
+.faq-section .accordion-button:focus {
+  background-color: #0056b3;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section .accordion-collapse {
+  border-top: 2px solid #007bff;
+  padding: 20px;
+  font-size: 1rem;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.faq-section .accordion-collapse.collapse {
+  opacity: 0;
+  height: 0;
+  padding: 0 20px;
+}
+
+.faq-section .accordion-collapse.show {
+  opacity: 1;
+  height: auto;
+}
+
+/* Accordion Button for collapsed state */
+.accordion-button.collapsed {
+  background-color: #f7f7f7;
+  color: #333;
+  font-weight: 500;
+}
+
+.accordion-button.collapsed:hover {
+  background-color: #e2e6ea;
+}
+
+/* AOS Animations */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos="fade-up"] {
+  transition-delay: 0.2s;
+}
+
+/* Animation for smooth transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 767px) {
+  .faq-section h2 {
+    font-size: 2rem;
+  }
+
+  .faq-section .accordion-button {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .faq-section .accordion-body {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .faq-section .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .faq-section .accordion-button {
+    font-size: 0.95rem;
+  }
+
+  .faq-section .accordion-body {
+    font-size: 0.9rem;
+  }
+}
+
+.modal-content {
+      border-radius: 12px;
     }
+    
 
-    @media (max-width: 768px) {
-      .donate-section {
-        padding: 50px 15px;
-      }
+    /* PayPal Button container styling */
+#paypal-button-container {
+  max-width: 300px;
+  margin: 0 auto;
+}
 
-      @media (max-width: 576px) {
-        .donate-form button {
-          margin-top: 15px;
-        }
-      }
+/* Custom Styling for Form */
+.donate-form {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    }
+.donate-form h4 {
+  font-weight: bold;
+  color: #333;
+}
+
+.donate-form .form-label {
+  font-size: 1rem;
+  color: #555;
+}
+
+.donate-button {
+  background-color: #28a745;
+  border: none;
+  padding: 12px;
+  font-size: 1.2rem;
+}
+
+.donate-button:hover {
+  background-color: #218838;
+}
+
+.payment-field {
+  display: none;
+}
+
+
+
+
   </style>
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
     <div class="container">
@@ -140,6 +287,7 @@
         <img src="images/cropped-Untitled_logo_1_free-file-removebg-preview (1).png" alt="NGO CONNECT Logo">
         NGO CONNECT
       </a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -150,213 +298,472 @@
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"> <a class="nav-link" href="events.html">Events</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  <section class="donate-section">
-    <div class="container">
-      <h2 class="text-center mb-4">Support Our Cause – Make a Donation</h2>
-      <p class="text-center mb-5">Your contribution helps us bring positive change to communities in need. No donation
-        is too small to make a difference.</p>
-
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="donate-form">
-            <form id="donationForm" novalidate>
-              <div class="input-group mb-3">
-                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                <input type="text" id="name" class="form-control" placeholder="John Doe" required />
-              </div>
+<!-- Hero Section -->
+<section class="hero-section text-white">
+  <div class="container">
+    <h1 data-aos="fade-down">Support A Cause</h1>
+    <p data-aos="fade-up" data-aos-delay="200">Your contribution matters. Help us make a difference today!</p>
+  </div>
+</section>
 
 
-              <div class="mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" id="email" class="form-control" placeholder="your@example.com" required />
-                <div class="invalid-feedback">Valid email is required.</div>
-              </div>
+<!-- Stats Section -->
+<section class="stats sticky-stats">
+  <div class="row">
+    <div class="col-md-6" data-aos="fade-up">
+      <h2 id="totalDonations">₹0</h2>
+      <p>Total Donations Collected</p>
+    </div>
+    <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+      <h2 id="totalDonors">0</h2>
+      <p>Generous Donors</p>
+    </div>
+  </div>
+</section>
 
-              <div class="mb-3">
-                <label for="purpose" class="form-label">Purpose of Donation</label>
-                <select id="purpose" class="form-select" required>
-                  <option value="">Select a purpose</option>
-                  <option value="Education Support">Education Support</option>
-                  <option value="Healthcare Aid">Healthcare Aid</option>
-                  <option value="Disaster Relief">Disaster Relief</option>
-                  <option value="General Fund">General Fund</option>
-                </select>
-                <div class="invalid-feedback">Please select a purpose.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="amount" class="form-label">Donation Amount (USD)</label>
-                <input type="number" id="amount" class="form-control" placeholder="e.g. 50" min="1" required />
-                <div class="invalid-feedback">Amount must be at least $1.</div>
-              </div>
-
-              <div class="mb-4">
-                <label class="form-label">Payment Method</label>
-                <div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="paymentMethod" id="paypal" value="PayPal"
-                      required>
-                    <label class="form-check-label" for="paypal">PayPal</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="paymentMethod" id="card"
-                      value="Credit/Debit Card">
-                    <label class="form-check-label" for="card">Credit/Debit Card</label>
-                  </div>
-                </div>
-                <div class="invalid-feedback d-block" id="paymentError" style="display: none;">Please select a payment
-                  method.</div>
-              </div>
-
-              <button type="submit" class="btn btn-primary" id="donateButton" disabled>Donate Now</button>
-            </form>
-
-            <div id="donationSummary" class="donation-summary">
-              <h4>🎉 Donation Summary</h4>
-              <p><strong>Name:</strong> <span id="summaryName"></span></p>
-              <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
-              <p><strong>Purpose:</strong> <span id="summaryPurpose"></span></p>
-              <p><strong>Amount:</strong> $<span id="summaryAmount"></span></p>
-              <p><strong>Payment Method:</strong> <span id="summaryMethod"></span></p>
+<!-- Donation Form -->
+<section class="donate-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-9">
+        <div class="donate-form card shadow-lg p-4" data-aos="zoom-in">
+          <h4 class="mb-4 text-center">Support Our Cause 💖</h4>
+          <form id="donationForm">
+            <div class="mb-3">
+              <label class="form-label"><i class="bi bi-person"></i> Full Name</label>
+              <input type="text" class="form-control" id="donorName" placeholder="Your full name" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><i class="bi bi-envelope"></i> Email Address</label>
+              <input type="email" class="form-control" id="donorEmail" placeholder="you@example.com" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><i class="bi bi-cash"></i> Donation Amount (₹)</label>
+              <input type="number" class="form-control" id="donationAmount" placeholder="Enter amount" min="1" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><i class="bi bi-credit-card"></i> Payment Method</label>
+              <select class="form-select" id="paymentMethod" required>
+                <option value="">Select</option>
+                <option value="UPI">UPI</option>
+                <option value="Card">Credit/Debit Card</option>
+                <option value="NetBanking">Net Banking</option>
+              </select>
             </div>
 
-            <div class="thank-you-message" id="thankYouMessage">💖 Thank you for your kind donation! Together, we’re
-              creating change.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="footer-section bg-dark text-white pt-5 pb-4">
-    <div class="container">
-      <div class="row gy-4">
-        <!-- Brand Info -->
-        <div class="col-lg-4 col-md-6">
-          <h4 class="footer-brand mb-3">NGO CONNECT</h4>
-          <p class="footer-text">
-            Bridging the gap between hope and action. Empowering lives through education, sustainability, and care.
-          </p>
-          <div class="footer-social mt-3">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
+            <!-- Dynamic Fields -->
+            <div class="mb-3 payment-field" id="upiField" style="display:none;">
+              <label class="form-label"><i class="bi bi-upc-scan"></i> UPI ID</label>
+              <input type="text" class="form-control" id="upiId" placeholder="example@upi">
+            </div>
 
-        <!-- Quick Links -->
-        <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title mb-3">Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="index.html" class="footer-link">Home</a></li>
-            <li><a href="about.html" class="footer-link">About</a></li>
-            <li><a href="gallery.html" class="footer-link">Gallery</a></li>
-            <li><a href="contact.html" class="footer-link">Contact</a></li>
-          </ul>
-        </div>
+            <div id="cardFields" style="display:none;">
+              <div class="mb-3">
+                <label class="form-label">Card Number</label>
+                <input type="text" class="form-control" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label class="form-label">Expiry</label>
+                  <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY">
+                </div>
+                <div class="col">
+                  <label class="form-label">CVV</label>
+                  <input type="password" class="form-control" id="cardCVV" placeholder="XXX">
+                </div>
+              </div>
+            </div>
 
-        <!-- Contact Info -->
-        <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title mb-3">Contact</h5>
-          <p><i class="fas fa-envelope me-2"></i>info@ngoconnect.org</p>
-          <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
-          <p><i class="fas fa-map-marker-alt me-2"></i>New Delhi, India</p>
-        </div>
+            <div class="mb-3 payment-field" id="netBankingField" style="display:none;">
+              <label class="form-label"><i class="bi bi-bank"></i> Select Bank</label>
+              <select class="form-select" id="bankSelect">
+                <option>Select Bank</option>
+                <option>State Bank of India</option>
+                <option>HDFC Bank</option>
+                <option>ICICI Bank</option>
+                <option>Axis Bank</option>
+                <option>Punjab National Bank</option>
+              </select>
+            </div>
 
-        <!-- Newsletter -->
-        <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title mb-3">Stay Updated</h5>
-          <p>Subscribe for updates and impact stories.</p>
-          <form class="d-flex">
-            <input type="email" class="form-control me-2" placeholder="Your Email" required />
-            <button type="submit" class="btn btn-warning">Join</button>
+            <button type="submit" class="btn btn-primary w-100 mt-3 donate-button">Donate Now</button>
           </form>
+
+          <!-- PayPal button -->
+          <div class="text-center mt-4">
+            <p class="fw-semibold">Or Donate via PayPal</p>
+            <div id="paypal-button-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AWmot317SSIr77d2HGiA1wBWQ_L0vStUTJD0n0wzuWVrcZ9UrHRBEtrN1-NCEYHgBPbDvW9qutTr14ci&currency=INR"></script>
+
+<!-- Donation Progress -->
+<div class="container my-5">
+  <h5 class="mb-3">Donation Goal: ₹10,000</h5>
+  <div class="progress" style="height: 26px;">
+    <div id="progressBar" class="progress-bar bg-success" role="progressbar" style="width: 0%;" data-current-amount="0">₹0</div>
+  </div>
+</div>
+
+<!-- Thank You Modal -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="thankYouModalLabel">Thank You for Your Generosity!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your donation is greatly appreciated! We'll use it to make a difference. 💖</p>
+        <p><strong>Donation Amount:</strong> ₹<span id="donationAmountSummary"></span></p>
+        <p><strong>Payment Method:</strong> <span id="paymentMethodSummary"></span></p>
+        <p>We’ll keep you updated on how your donation is making a positive impact!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FAQ Section -->
+<section class="faq-section">
+  <div class="container py-5">
+    <h2 class="text-center mb-4" data-aos="fade-up">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="200">
+      <!-- FAQ 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+            Is my donation tax-deductible?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, all donations above ₹500 are eligible for tax exemption under section 80G of the Income Tax Act. You will receive a receipt for your donation, which can be used for tax purposes. The receipt will be sent to your registered email address after successful payment.
+          </div>
+        </div>
+      </div>
+      <!-- FAQ 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+            How is my donation utilized?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Your donation directly funds education, healthcare, and relief activities for underprivileged communities. It helps us provide scholarships to deserving students, medical care for those in need, and emergency relief in times of natural disasters. 100% of your contribution goes to the cause.
+          </div>
+        </div>
+      </div>
+      <!-- FAQ 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+            How can I get a receipt for my donation?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            After making a donation, you will automatically receive a digital receipt via email. This receipt will include the donation amount, date, and our NGO's registration details. You can use this receipt for tax purposes. If you don't receive it, please check your spam folder or contact our support team.
+          </div>
+        </div>
+      </div>
+      <!-- FAQ 4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+            Can I donate anonymously?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, we respect your privacy. When making a donation, you can choose to remain anonymous. This means your name will not be displayed publicly in our donation list or other reports. However, you will still receive a receipt for tax purposes.
+          </div>
+        </div>
+      </div>
+      <!-- FAQ 5 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+            Is there a recurring donation option?
+          </button>
+        </h2>
+        <div id="faq5" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, we offer a recurring donation option where you can set up monthly contributions. This allows you to contribute to our cause on a consistent basis. You can manage your recurring donation through your donor profile on our website and cancel it at any time.
+          </div>
+        </div>
+      </div>
+      <!-- FAQ 6 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+            Can I donate goods instead of money?
+          </button>
+        </h2>
+        <div id="faq6" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, we accept donations of goods like clothing, food, and educational materials. Please reach out to our support team to coordinate the donation process and find out how to drop off or send items. Financial donations are also welcomed, as they help us fund various programs.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ <!-- Footer -->
+ <footer class="footer-section bg-dark text-white pt-5 pb-4">
+  <div class="container">
+    <div class="row gy-4">
+      <!-- Brand Info -->
+      <div class="col-lg-4 col-md-6">
+        <h4 class="footer-brand mb-3">NGO CONNECT</h4>
+        <p class="footer-text">
+          Bridging the gap between hope and action. Empowering lives through education, sustainability, and care.
+        </p>
+        <p class="footer-text mb-3">
+          Join us in making a meaningful difference for communities across the globe.
+        </p>
+        <div class="footer-social mt-3">
+          <a href="#" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="footer-social-icon"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
 
-      <hr class="footer-divider mt-4" />
-
-      <div class="text-center">
-        <small class="text-muted">&copy; 2025 NGO CONNECT. All Rights Reserved. | Designed with ❤️</small>
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6">
+        <h5 class="footer-title mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+          <li><a href="donate.html" class="footer-link">Donate</a></li>
+          <li><a href="volunteer.html" class="footer-link">Volunteer</a></li>
+        </ul>
       </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title mb-3">Contact</h5>
+        <p><i class="fas fa-envelope me-2"></i>info@ngoconnect.org</p>
+        <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+        <p><i class="fas fa-map-marker-alt me-2"></i>New Delhi, India</p>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title mb-3">Stay Updated</h5>
+        <p>Subscribe for updates, news, and inspiring stories from our community.</p>
+        <form id="subscribeForm" class="d-flex">
+          <input type="email" id="subscriberEmail" class="form-control me-2" placeholder="Your Email" required />
+          <button type="submit" class="btn btn-warning">Join</button>
+        </form>
+      </div>
+
     </div>
-  </footer>
+    <hr class="footer-divider mt-4" />
+    <div class="text-center">
+      <small class="text-muted">&copy; 2025 NGO CONNECT. All Rights Reserved. | Designed with ❤️ by Tushar</small>
+    </div>
+  </div>
+</footer>
 
-  <script>
-    const donationForm = document.getElementById("donationForm");
-    const donateButton = document.getElementById("donateButton");
-    const amountInput = document.getElementById("amount");
 
-    amountInput.addEventListener("input", function () {
-      const amount = parseFloat(this.value);
-      donateButton.disabled = isNaN(amount) || amount <= 0;
-      donateButton.textContent = !isNaN(amount) && amount > 0 ? `Donate $${amount.toFixed(2)}` : "Donate Now";
-    });
 
-    donationForm.addEventListener("submit", function (e) {
-      e.preventDefault();
+<!-- Bootstrap Icons -->
 
-      let isValid = true;
-      const inputs = this.querySelectorAll("input, select");
-      const paymentSelected = donationForm.querySelector('input[name="paymentMethod"]:checked');
-      const paymentError = document.getElementById("paymentError");
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: true
+  });
 
-      inputs.forEach((input) => {
-        if (!input.checkValidity()) {
-          input.classList.add("is-invalid");
-          isValid = false;
-        } else {
-          input.classList.remove("is-invalid");
-        }
-      });
+  let totalDonationAmount = 0;
+  let totalDonors = 0;
+  const goalAmount = 10000;
 
-      if (!paymentSelected) {
-        paymentError.style.display = "block";
-        isValid = false;
-      } else {
-        paymentError.style.display = "none";
-      }
+  // Form submission event
+  document.getElementById("donationForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      if (isValid) {
-        document.getElementById("summaryName").textContent = donationForm.name.value;
-        document.getElementById("summaryEmail").textContent = donationForm.email.value;
-        document.getElementById("summaryPurpose").textContent = donationForm.purpose.value;
-        document.getElementById("summaryAmount").textContent = donationForm.amount.value;
-        document.getElementById("summaryMethod").textContent = paymentSelected.value;
+    const amount = parseInt(document.getElementById("donationAmount").value);
+    const paymentMethod = document.getElementById("paymentMethod").value;
 
-        document.getElementById("donationSummary").style.display = "block";
-        document.getElementById("thankYouMessage").style.display = "block";
-
-        donationForm.reset();
-        donateButton.textContent = "Donate Now";
-        donateButton.disabled = true;
-      }
-    });
-    if (isValid) {
-      // Scroll to summary
-      document.getElementById("donationSummary").scrollIntoView({ behavior: "smooth" });
+    if (isNaN(amount) || amount < 1) {
+      alert("Please enter a valid donation amount.");
+      return;
     }
-donateButton.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Processing...`;
-setTimeout(() => {
-  // Show summary and reset button
-  donateButton.textContent = "Donate Now";
-}, 1000);
 
-  </script>
+    totalDonationAmount += amount;
+    totalDonors++;
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    // Update modal
+    document.getElementById("donationAmountSummary").textContent = amount.toLocaleString();
+    document.getElementById("paymentMethodSummary").textContent = paymentMethod;
 
-  <!-- AOS Initialization -->
-  <script>
-    AOS.init();
-  </script>
+    // Show thank you modal
+    const thankYouModal = new bootstrap.Modal(document.getElementById("thankYouModal"));
+    thankYouModal.show();
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    // Update UI
+    updateProgressBar();
+    animateCounter("totalDonations", totalDonationAmount);
+    animateCounter("totalDonors", totalDonors);
+
+    // Reset form and button
+    this.reset();
+    hidePaymentFields();
+    document.querySelector("#donationForm button[type='submit']").innerText = "Donate Now";
+  });
+
+  // Progress bar update
+  function updateProgressBar() {
+    const progressPercentage = Math.min((totalDonationAmount / goalAmount) * 100, 100);
+    const progressBar = document.getElementById("progressBar");
+    progressBar.style.width = progressPercentage + "%";
+    progressBar.innerText = "₹" + totalDonationAmount.toLocaleString();
+  }
+
+  // Live updating Donate button text
+  document.getElementById("donationAmount").addEventListener("input", function () {
+    const amount = this.value;
+    const button = document.querySelector("#donationForm button[type='submit']");
+    button.innerText = amount ? `Donate ₹${formatAmount(amount)} Now` : "Donate Now";
+  });
+
+  // Format number with commas
+  function formatAmount(amount) {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  // Show/hide payment fields
+  document.getElementById("paymentMethod").addEventListener("change", function () {
+    const method = this.value;
+    document.getElementById("upiField").style.display = method === "UPI" ? "block" : "none";
+    document.getElementById("cardFields").style.display = method === "Card" ? "block" : "none";
+    document.getElementById("netBankingField").style.display = method === "NetBanking" ? "block" : "none";
+  });
+
+  // UPI validation
+  document.getElementById("upiId").addEventListener("blur", function () {
+    const upiPattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+$/;
+    if (this.value && !upiPattern.test(this.value)) {
+      alert("Please enter a valid UPI ID.");
+    }
+  });
+
+  // Card number validation
+  document.getElementById("cardNumber").addEventListener("blur", function () {
+    const cardPattern = /^[0-9]{16}$/;
+    if (this.value && !cardPattern.test(this.value)) {
+      alert("Please enter a valid 16-digit card number.");
+    }
+  });
+
+  // Hide payment fields utility
+  function hidePaymentFields() {
+    document.getElementById("upiField").style.display = "none";
+    document.getElementById("cardFields").style.display = "none";
+    document.getElementById("netBankingField").style.display = "none";
+  }
+
+  // Number animation for counters
+  function animateCounter(id, targetValue) {
+    const el = document.getElementById(id);
+    const current = parseInt(el.textContent.replace(/[^0-9]/g, "")) || 0;
+    const increment = (targetValue - current) / 50;
+
+    let value = current;
+    const update = () => {
+      value += increment;
+      if ((increment > 0 && value >= targetValue) || (increment < 0 && value <= targetValue)) {
+        value = targetValue;
+        el.textContent = id === "totalDonations" ? "₹" + value.toLocaleString() : value;
+        return;
+      }
+      el.textContent = id === "totalDonations" ? "₹" + Math.round(value).toLocaleString() : Math.round(value);
+      requestAnimationFrame(update);
+    };
+    update();
+  }
+
+  // PayPal Button Integration for Testing
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      const donationAmount = parseFloat(document.getElementById("donationAmount").value);
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: donationAmount.toFixed(2)  // Ensure 2 decimal places
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Payment approved by ' + details.payer.name.given_name);
+        // After approval, you can update your UI or do any other necessary action.
+      });
+    }
+  }).render('#paypal-button-container');  // Render PayPal button inside this container
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Load EmailJS SDK first -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize EmailJS with your User ID
+    emailjs.init("1gLieMpTSjAUG7aHK");
+
+    // Attach listener to your subscription form
+    document.getElementById("subscribeForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Get email value
+      const userEmail = document.getElementById("subscriberEmail").value;
+
+      // Validate email (basic)
+      if (!userEmail || !userEmail.includes("@")) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      // Send email via EmailJS
+      emailjs.send("service_cp5lz27", "template_2x4pw2g", {
+        email: userEmail,
+      }).then(function(response) {
+        console.log("Success!", response);
+        alert("Thank you for subscribing!");
+        // Clear the form
+        document.getElementById("subscribeForm").reset();
+      }, function(error) {
+        console.error("Failed...", error);
+        alert("Something went wrong. Please try again later.");
+      });
+    });
+  });
+</script>
+
+
 </body>
-
 </html>
